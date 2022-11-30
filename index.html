@@ -8,6 +8,7 @@
     <style>
         * {
             margin: 0;
+            overflow: hidden;
         }
         #container {
             background: #000;
@@ -18,7 +19,6 @@
             right: 0;
             width: auto;
             height: auto;
-            margin: 10px 0;
         }
     </style>
 </head>
@@ -27,14 +27,16 @@
     <script>
         var url = new URL(window.location);
         window.RufflePlayer = window.RufflePlayer || {};
+        window.RufflePlayer.config = {
+            "letterbox": "on",
+            "scale": "showAll"
+        }
         window.addEventListener("load", (event) => {
             const ruffle = window.RufflePlayer.newest();
             const player = ruffle.createPlayer();
-            player.addEventListener('loadedmetadata', () => {
-                player.style.width = player.metadata.width+"px";
-                player.style.height = player.metadata.height+"px";
-            });
             const container = document.getElementById("container");
+            player.style.width = window.innerWidth+"px";
+            player.style.height = window.innerHeight+"px";
             container.appendChild(player);
             player.load(`./swfs/${url.searchParams.get("file")}.swf`);
         });
