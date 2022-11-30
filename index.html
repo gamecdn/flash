@@ -30,13 +30,13 @@
         window.addEventListener("load", (event) => {
             const ruffle = window.RufflePlayer.newest();
             const player = ruffle.createPlayer();
-            player.style.width = window.innerWidth+"px";
-            player.style.height = window.innerHeight+"px";
+            //player.style.width = window.innerWidth+"px";
+            //player.style.height = window.innerHeight+"px";
             const container = document.getElementById("container");
             container.appendChild(player);
             player.load(`./swfs/${url.searchParams.get("file")}.swf`);
         });
     </script>
-    <script src="./ruffle/ruffle.js"></script>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle/ruffle.js"></script>
 </body>
 </html>
