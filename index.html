@@ -30,8 +30,10 @@
         window.addEventListener("load", (event) => {
             const ruffle = window.RufflePlayer.newest();
             const player = ruffle.createPlayer();
-            //player.style.width = window.innerWidth+"px";
-            //player.style.height = window.innerHeight+"px";
+            player.addEventListener('loadedmetadata', () => {
+                player.style.width = player.metadata.width+"px";
+                player.style.height = player.metadata.height+"px";
+            }
             const container = document.getElementById("container");
             container.appendChild(player);
             player.load(`./swfs/${url.searchParams.get("file")}.swf`);
