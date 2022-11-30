@@ -33,7 +33,7 @@
             player.addEventListener('loadedmetadata', () => {
                 player.style.width = player.metadata.width+"px";
                 player.style.height = player.metadata.height+"px";
-            }
+            });
             const container = document.getElementById("container");
             container.appendChild(player);
             player.load(`./swfs/${url.searchParams.get("file")}.swf`);
